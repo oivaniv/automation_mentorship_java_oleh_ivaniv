@@ -1,4 +1,4 @@
-package BasicOOP;
+package BasicOOP.Classes;
 
 public class Vehicle {
 

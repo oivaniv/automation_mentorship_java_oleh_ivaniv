@@ -1,4 +1,4 @@
-package BasicOOP;
+package BasicOOP.Classes;
 
 public class Opel {
     public static void main(String[] args) {
