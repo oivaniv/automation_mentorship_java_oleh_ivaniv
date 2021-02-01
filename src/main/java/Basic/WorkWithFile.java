@@ -6,7 +6,7 @@ import java.util.Formatter;
 import java.util.Scanner;
 
 public class WorkWithFile {
-    public static void main(String[] args) {
+    public static void createFile() {
         try {
             //We use Formatter class to create new file
             //If file exist it will overwrite it
@@ -21,7 +21,9 @@ public class WorkWithFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+    }
 
+    public static void readFile() {
         try {
             File file = new File("C:\\Users\\oivaniv\\Documents\\NewTestFile2.txt");
             Scanner scanner = new Scanner(file);
@@ -33,5 +35,6 @@ public class WorkWithFile {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 }

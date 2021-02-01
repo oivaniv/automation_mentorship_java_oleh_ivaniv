@@ -10,8 +10,7 @@ import java.util.Scanner;
 public class WorkWithDigitsFIle {
     private static final String PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile3.txt";
 
-    public static void main(String[] args) {
-
+    public static void createFile() {
         //Create FIle. Set text into file with digits and letters, where digits are in separate line.
         try {
             new File(PATH).createNewFile();
@@ -30,6 +29,10 @@ public class WorkWithDigitsFIle {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void readFileInfo() {
+
 
         //Read digits from the file and make some math operations with them
         try {
@@ -38,8 +41,8 @@ public class WorkWithDigitsFIle {
 
             ArrayList<Integer> digits = new ArrayList<>();
 
-            while (scanner.hasNext()){
-                if (scanner.hasNextInt()){
+            while (scanner.hasNext()) {
+                if (scanner.hasNextInt()) {
                     digits.add(scanner.nextInt());
                 } else {
                     scanner.next();
@@ -57,4 +60,5 @@ public class WorkWithDigitsFIle {
             e.printStackTrace();
         }
     }
+
 }
