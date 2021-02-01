@@ -1,4 +1,5 @@
 import Basic.*;
+import EqualsInJava.Primitive;
 
 public class Runner {
     public static void main(String[] args) {
@@ -35,5 +36,13 @@ public class Runner {
         //WorkWithFile class
 //        WorkWithFile.createFile();
 //        WorkWithFile.readFile();
+
+        //EqualsInJave class
+//        Primitive.ValueCompare();
+//        Primitive.ObjectCompare();
+//        Primitive.stringCompareAsObject();
+
+
+
     }
 }
