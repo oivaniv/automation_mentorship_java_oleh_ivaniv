@@ -1,6 +1,5 @@
 package Basic;
 
-import java.awt.*;
 import java.util.Locale;
 
 public class StringBasic {

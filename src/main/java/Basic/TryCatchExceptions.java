@@ -6,7 +6,10 @@ public class TryCatchExceptions {
             int a[] = new int[2];
             System.out.println(a[5]);
         } catch (Exception e) {
-            System.out.println("An error occurred");
+            //Add error message
+            System.out.println("An error occurred"+ e.getMessage());
+            //Add info about StackTrace
+            System.out.println(e.getStackTrace());
         }
 
 

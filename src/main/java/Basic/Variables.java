@@ -26,6 +26,8 @@ public class Variables {
         System.out.println(a2==a3);
         System.out.println(f1==d1);
         System.out.println(s2==s1);
+        //Always verify difference by equals!
+        System.out.println(s2.equals(s1));
 
         //Don't assign any values and compare variables. (Can compare not initialized variables)
         //System.out.println(a6 == a5);

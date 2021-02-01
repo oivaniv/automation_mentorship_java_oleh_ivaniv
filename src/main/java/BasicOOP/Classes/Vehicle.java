@@ -19,7 +19,7 @@ public class Vehicle {
         wheelSize=wSize;
         maxSpeed=mSpeed;
         averageFuel = aFuel;
-        vehicleColor = color;
+        color = vehicleColor;
     }
 
     Vehicle(){

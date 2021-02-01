@@ -2,16 +2,21 @@ package Basic;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Formatter;
 import java.util.Scanner;
 
 public class WorkWithDigitsFIle {
+    private static final String PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile3.txt";
+
     public static void main(String[] args) {
 
         //Create FIle. Set text into file with digits and letters, where digits are in separate line.
         try {
-            Formatter formatter = new Formatter("C:\\Users\\oivaniv\\Documents\\NewTestFile3.txt");
+            new File(PATH).createNewFile();
+
+            Formatter formatter = new Formatter(PATH);
 
             //.format method we use to put some data into the file. By "%s %s %s" - we initialize the data order, each %s would be replaced by parameter
             formatter.format("%s %s", "1", "Ivo \r \n");
@@ -22,11 +27,13 @@ public class WorkWithDigitsFIle {
         } catch (
                 FileNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         //Read digits from the file and make some math operations with them
         try {
-            File file = new File("C:\\Users\\oivaniv\\Documents\\NewTestFile3.txt");
+            File file = new File(PATH);
             Scanner scanner = new Scanner(file);
 
             ArrayList<Integer> digits = new ArrayList<>();

@@ -17,10 +17,8 @@ public class Cycles {
 
         //foreach usage
         int[] numbers = { 1,2,3,4,5,6,7,8,9,10 };
-        int z=0;
         for(int num:numbers){
-            System.out.println(numbers[z]);
-            z++;
+            System.out.println(num);
         }
 
         //Infinite loop
