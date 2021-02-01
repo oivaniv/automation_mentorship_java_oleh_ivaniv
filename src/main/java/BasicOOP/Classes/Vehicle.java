@@ -15,7 +15,7 @@ public class Vehicle {
     }
 
 
-    Vehicle( int wSize, int mSpeed, double aFuel, String vehicleColor){
+    public Vehicle(int wSize, int mSpeed, double aFuel, String vehicleColor){
         wheelSize=wSize;
         maxSpeed=mSpeed;
         averageFuel = aFuel;
