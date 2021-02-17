@@ -1,8 +1,15 @@
 package Lesson_3.HW_OOP.parkingPlace;
 
-public class ParkingLviv extends ParkingPlace{
+public class ParkingLviv extends ParkingPlace {
 
     private int parkingLvivDiscount;
+
+    public ParkingLviv(int parkingSquare, int parkingPlacesQuantity, int parkingPlacePrise, String parkingName) {
+        this.setParkingSquare(parkingSquare);
+        this.setParkingPlacesQuantity(parkingPlacesQuantity);
+        this.setParkingPlacePrise(parkingPlacePrise);
+        this.setParkingName(parkingName);
+    }
 
     public int getParkingLvivDiscount() {
         return parkingLvivDiscount;
@@ -10,13 +17,6 @@ public class ParkingLviv extends ParkingPlace{
 
     public void setParkingLvivDiscount(int parkingLvivDiscount) {
         this.parkingLvivDiscount = parkingLvivDiscount;
-    }
-
-    ParkingLviv(int parkingSquare, int parkingPlacesQuantity, int parkingPlacePrise, String parkingName){
-        this.setParkingSquare(parkingSquare);
-        this.setParkingPlacesQuantity(parkingPlacesQuantity);
-        this.setParkingPlacePrise(parkingPlacePrise);
-        this.setParkingName(parkingName);
     }
 
     @Override
@@ -30,12 +30,12 @@ public class ParkingLviv extends ParkingPlace{
 
     @Override
     public void takeParkingPlace() {
-        this.setParkingPlacesQuantity(this.getParkingPlacesQuantity()+1);
+        this.setParkingPlacesQuantity(this.getParkingPlacesQuantity() + 1);
     }
 
     @Override
     public void leaveParkingPlace() {
-        this.setParkingPlacesQuantity(this.getParkingPlacesQuantity()-1);
+        this.setParkingPlacesQuantity(this.getParkingPlacesQuantity() - 1);
     }
 
 

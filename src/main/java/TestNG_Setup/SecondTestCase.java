@@ -3,6 +3,8 @@ package TestNG_Setup;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import org.testng.annotations.Test;
+
 public class SecondTestCase {
     @Test
 

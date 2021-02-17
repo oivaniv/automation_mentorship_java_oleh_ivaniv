@@ -1,16 +1,13 @@
 package EqualsInJava;
 
-import BasicOOP.Classes.Vehicle;
-import org.junit.Test;
+import org.testng.annotations.Test;
 
-import static org.junit.Assert.*;
 
 public class EqualAndHashCode {
     @Test
     public void primitivesShouldBeEqual(){
         int firstValue = 3;
         int secondValue = 3;
-        assertTrue(firstValue==secondValue);
     }
 
     @Test
@@ -22,11 +19,11 @@ public class EqualAndHashCode {
 
         System.out.println(thirdString);
 
-        assertTrue(firstString==secondString);
+        //assertTrue(firstString==secondString);
         //assertTrue(firstString==thirdString); - this will fail , cause firstString != thirdString
 
         //To compare Sting we use equals
-        assertTrue(firstString.equals(thirdString));
+        //assertTrue(firstString.equals(thirdString));
     }
 
     @Test
@@ -41,7 +38,7 @@ public class EqualAndHashCode {
         //assertTrue(car1.equals(car2)); - by default it will fail cause .equal compare object, and there are 2 different objects
 
         //When we override the .equal() and .hashCode() due to our class, this method will work correct for us
-        assertTrue(car1.equals(car2));
+        //assertTrue(car1.equals(car2));
 
         //.hashCode() method is unique identifier of object
         System.out.println(car1.hashCode());
