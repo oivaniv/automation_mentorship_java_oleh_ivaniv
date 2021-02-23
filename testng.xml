@@ -5,7 +5,7 @@
     <test verbose="2"
           name="C:\Users\oivaniv\IdeaProjects\AutomationNiX\src\main\java\Lesson_4\calculator\test">
         <classes>
-            <class name="Lesson_4.calculator.test.SumOperationTesting"/>
+            <class name="Lesson_4.calculator.test.SumOperationTest"/>
 
 
         </classes>

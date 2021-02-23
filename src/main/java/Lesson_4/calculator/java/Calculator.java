@@ -40,6 +40,9 @@ public class Calculator {
             System.out.println("Division result for: (" + firstEnteredValue + ") / (" + secondEnteredValue + ") is: " + operationResult);
 
         } else {
+            //Can i assign some value to combine it in assert?
+            // for example --->
+            operationResult = 0;
             System.out.println("Second entered value can't be 0!");
         }
         return operationResult;

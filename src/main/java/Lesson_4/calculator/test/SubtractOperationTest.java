@@ -4,7 +4,7 @@ import Lesson_4.calculator.java.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SubtractOperationTesting extends BaseTestClass{
+public class SubtractOperationTest extends BaseTestClass{
 
     Calculator calculator = new Calculator();
 

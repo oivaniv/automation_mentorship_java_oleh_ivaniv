@@ -6,7 +6,7 @@ import org.testng.Reporter;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class SumOperationTesting extends BaseTestClass {
+public class SumOperationTest extends BaseTestClass {
 
     Calculator calculator = new Calculator();
 
