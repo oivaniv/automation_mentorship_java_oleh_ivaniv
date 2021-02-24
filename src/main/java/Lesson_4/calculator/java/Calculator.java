@@ -8,12 +8,9 @@ public class Calculator {
     private int secondEnteredValue;
     private int operationResult;
 
-    void enterValue() {
-        Scanner scanner = new Scanner(System.in);
+    public int calculator(int firstEnteredValue, int secondEnteredValue, String operator){
 
-        firstEnteredValue = scanner.nextInt();
-        secondEnteredValue = scanner.nextInt();
-
+        return operationResult;
     }
 
     public int sumOperation(int firstEnteredValue, int secondEnteredValue) {
