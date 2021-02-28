@@ -4,44 +4,42 @@ import java.util.Scanner;
 
 public class Calculator {
 
-    private int firstEnteredValue;
-    private int secondEnteredValue;
-    private int operationResult;
+    private Double operationResult = 0.0;
 
-    public int calculator(int firstEnteredValue, int secondEnteredValue, String operator){
+    public double calculator(double firstEnteredValue, double secondEnteredValue, CalculatorOperations calculatorOperations) {
 
-        return operationResult;
-    }
-
-    public int sumOperation(int firstEnteredValue, int secondEnteredValue) {
-        operationResult = firstEnteredValue + secondEnteredValue;
-        System.out.println("Sum result for: (" + firstEnteredValue + ") + (" + secondEnteredValue + ") is: " + operationResult);
-        return operationResult;
-    }
-
-    public int subtractOperation(int firstEnteredValue, int secondEnteredValue) {
-        operationResult = firstEnteredValue - secondEnteredValue;
-        System.out.println("Subtraction result for: (" + firstEnteredValue + ") - (" + secondEnteredValue + ") is: " + operationResult);
-        return operationResult;
-    }
-
-    public int multiplicationOperation(int firstEnteredValue, int secondEnteredValue) {
-        operationResult = firstEnteredValue * secondEnteredValue;
-        System.out.println("Multiplication result for: (" + firstEnteredValue + ") * (" + secondEnteredValue + ") is: " + operationResult);
-        return operationResult;
-    }
-
-    public int divisionOperation(int firstEnteredValue, int secondEnteredValue) {
-        if (secondEnteredValue != 0) {
-            operationResult = firstEnteredValue / secondEnteredValue;
-            System.out.println("Division result for: (" + firstEnteredValue + ") / (" + secondEnteredValue + ") is: " + operationResult);
-
-        } else {
-            //Can i assign some value to combine it in assert?
-            // for example --->
-            operationResult = 0;
-            System.out.println("Second entered value can't be 0!");
+        switch (calculatorOperations) {
+            case SUM:
+                operationResult = firstEnteredValue + secondEnteredValue;
+                break;
+            case SUBTRACT:
+                operationResult = firstEnteredValue - secondEnteredValue;
+                System.out.println(operationResult);
+                break;
+            case MULTIPLICATION:
+                operationResult = firstEnteredValue * secondEnteredValue;
+                System.out.println(operationResult);
+                break;
+            case DIVISION:
+                if (secondEnteredValue == 0) {
+                    throw new IllegalArgumentException("Second entered value can't be 0!");
+                } else {
+                    operationResult = firstEnteredValue / secondEnteredValue;
+                    System.out.println(operationResult);
+                }
+                break;
         }
+        //System.out.println(operationResult);
+        //Why i see .000000 after value???
+        //System.out.printf("Result of " + calculatorOperations + " operation for %g and %g is %g", firstEnteredValue, secondEnteredValue, operationResult);
+        System.out.println("Result of " + calculatorOperations + " operation for " + firstEnteredValue + " and " + secondEnteredValue + " is " + operationResult);
+
         return operationResult;
+
+
+        //System.out.println("Division result for: (" + firstEnteredValue + ") / (" + secondEnteredValue + ") is: " + operationResult);
+
     }
+
+
 }

@@ -1,6 +1,7 @@
 package Lesson_4.calculator.test;
 
 import Lesson_4.calculator.java.Calculator;
+import Lesson_4.calculator.java.CalculatorOperations;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -10,32 +11,42 @@ public class MultiplicationOperationTest extends BaseTestClass {
 
     @Test(testName = "Verify entering correct value for multiplication operation")
     public void correctValueForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation(10, 2), 20);
+        Assert.assertEquals(calculator.calculator(10.0, 2.0, CalculatorOperations.MULTIPLICATION), 20.0);
     }
 
     @Test(testName = "Verify entering zero values for multiplication operation")
     public void zeroValueForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation(0, 0), 0);
+        Assert.assertEquals(calculator.calculator(0.0, 0.0, CalculatorOperations.MULTIPLICATION), 0.0);
+    }
+
+
+    @Test(testName = "Verify entering zero values as first parameter for multiplication operation")
+    public void firstParameterZeroValueForMultiplicationOperation() {
+        Assert.assertEquals(calculator.calculator(0.0, 2.0, CalculatorOperations.MULTIPLICATION), 0.0);
+    }
+
+    @Test(testName = "Verify entering zero values as second parameter for multiplication operation")
+    public void secondParameterZeroValueForMultiplicationOperation() {
+        Assert.assertEquals(calculator.calculator(2.0, 0.0, CalculatorOperations.MULTIPLICATION), 0.0);
     }
 
     @Test(testName = "Verify entering two minus values for multiplication operation")
     public void twoMinusValuesForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation(-10, -2), -20);
+        Assert.assertEquals(calculator.calculator(-10.0, -2.0, CalculatorOperations.MULTIPLICATION), 20.0);
     }
 
     @Test(testName = "Verify entering minus values as first parameter for multiplication operation")
     public void firstParameterMinusValueForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation(-10, 2), -20);
-        //Reporter.log("Test is passed");
+        Assert.assertEquals(calculator.calculator(-10.0, 2.0, CalculatorOperations.MULTIPLICATION), -20.0);
     }
 
     @Test(testName = "Verify entering minus values as second parameter for multiplication operation")
     public void secondParameterMinusValueForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation(10, -2), -20);
+        Assert.assertEquals(calculator.calculator(10.0, -2.0, CalculatorOperations.MULTIPLICATION), -20.0);
     }
 
-    @Test(testName = "Verify entering double as parameter for multiplication operation")
+    @Test(testName = "Verify entering int as parameter for multiplication operation")
     public void doubleValueForMultiplicationOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation((int) 1.1, (int) 1.2), 1);
+        Assert.assertEquals(calculator.calculator(2, 5,CalculatorOperations.MULTIPLICATION), 10.0);
     }
 }

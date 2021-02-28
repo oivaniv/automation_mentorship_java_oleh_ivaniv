@@ -1,5 +1,8 @@
+
 package Lesson_4.calculator.test;
 
+import Lesson_4.calculator.java.CalculatorOperations;
+import Lesson_4.calculator.test.BaseTestClass;
 import Lesson_4.calculator.java.Calculator;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -9,44 +12,43 @@ public class DivisionOperationTest extends BaseTestClass {
 
     @Test(testName = "Verify entering correct value for division operation")
     public void correctValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(10, 2), 5);
+        Assert.assertEquals(calculator.calculator(10.0, 5.0, CalculatorOperations.DIVISION), 2.0);
     }
 
-    //What should be value to verify this test case
-    @Test(testName = "Verify entering zero values for division operation")
+    //We will assert this value with null
+    @Test(testName = "Verify entering zero values for division operation", expectedExceptions = IllegalArgumentException.class)
     public void zeroValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(0, 0), 0);
+        calculator.calculator(0.0, 0.0, CalculatorOperations.DIVISION);
     }
 
     @Test(testName = "Verify entering zero values as first parameter for division operation")
     public void firstParameterZeroValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(0, 2), 0);
+        Assert.assertEquals(calculator.calculator(0.0, 2.0, CalculatorOperations.DIVISION), 0.0);
     }
 
-    //What should be value to verify this test case
-    @Test(testName = "Verify entering zero values as second parameter for division operation")
+    //Can't use null for /0 result, cause we can't return null as method result!
+    @Test(testName = "Verify entering zero values as second parameter for division operation", expectedExceptions=IllegalArgumentException.class)
     public void secondParameterZeroValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(2, 0), -0);
+        calculator.calculator(2.0, 0.0, CalculatorOperations.DIVISION);
     }
 
     @Test(testName = "Verify entering two minus values for division operation")
     public void twoMinusValuesForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(-10, -2), 5);
+        Assert.assertEquals(calculator.calculator(-10.0, -2.0, CalculatorOperations.DIVISION), 5.0);
     }
 
     @Test(testName = "Verify entering minus values as first parameter for division operation")
     public void firstParameterMinusValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(-10, 2), -5);
-        //Reporter.log("Test is passed");
+        Assert.assertEquals(calculator.calculator(-10.0, 2.0, CalculatorOperations.DIVISION), -5.0);
     }
 
     @Test(testName = "Verify entering minus values as second parameter for division operation")
     public void secondParameterMinusValueForDivisionOperation() {
-        Assert.assertEquals(calculator.divisionOperation(10, -2), -5);
+        Assert.assertEquals(calculator.calculator(10.0, -2.0, CalculatorOperations.DIVISION), -5.0);
     }
 
-    @Test(testName = "Verify entering double as parameter for division operation")
-    public void doubleValueForDivisionOperation() {
-        Assert.assertEquals(calculator.multiplicationOperation((int) 1.1, (int) 1.2), 1);
+    @Test(testName = "Verify entering int as parameter for division operation")
+    public void intValueForDivisionOperation() {
+        Assert.assertEquals(calculator.calculator(10,  2, CalculatorOperations.DIVISION), 5.0);
     }
 }
