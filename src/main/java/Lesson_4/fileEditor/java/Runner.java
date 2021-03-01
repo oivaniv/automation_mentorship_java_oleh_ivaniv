@@ -7,12 +7,28 @@ public class Runner {
 
     public static void main(String[] args) throws IOException {
 
-       // User user1 = new User(1, "Oleh", "Ivaniv");
+        User expectedUser1 = new User();
+        expectedUser1.setId(1);
+        expectedUser1.setName("Oleh");
+        expectedUser1.setSurname("Ivaniv");
 
-        UserManager userManager1 = new UserManager("C:\\Users\\oivaniv\\Documents\\NewTestFile4.txt");
+        User expectedUser2 = new User();
+        expectedUser2.setId(2);
+        expectedUser2.setName("Ivan");
+        expectedUser2.setSurname("Baloh");
+
+        User expectedUser3 = new User();
+        expectedUser3.setId(3);
+        expectedUser3.setName("Pavlo");
+        expectedUser3.setSurname("Korec");
+
+        UserManager userManager = new UserManager();
+        userManager.createUser(expectedUser1);
+        userManager.createUser(expectedUser2);
+        userManager.createUser(expectedUser3);
 
 
-        UserManager userManager2 = new UserManager("C:\\Users\\oivaniv\\Documents\\NewTestFile4.txt", 2, "Stepan", "Giga");
+
 
     }
 }

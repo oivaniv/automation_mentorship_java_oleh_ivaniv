@@ -12,51 +12,67 @@ import static org.junit.Assert.assertEquals;
 
 public class UserManager {
 
-    UserManager(String pathToFile) throws IOException {
-        File file = new File(pathToFile);
+    public static final String DEFAULT_PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt";
+
+    static File file = new File(DEFAULT_PATH);
+
+
+    public UserManager() throws IOException {
+        File file = new File(DEFAULT_PATH);
 
         if (file.exists()) {
-            System.out.println(file.getName() + " exist");
-
-            Scanner scanner = new Scanner(file);
-
-            while (scanner.hasNextLine()){
-                System.out.println(scanner.nextLine());
-            }
-
-        } else {
-            System.out.println(file.getName() + " doesn't exist");
-
-        }
-
-
-    }
-
-    UserManager(String pathToFile, int id, String name, String surname) throws FileNotFoundException {
-        File file = new File(pathToFile);
-
-        if (file.exists()) {
-
             System.out.println(file.getName() + " exist, we can't create new");
 
         } else {
-            PrintWriter printWriter = new PrintWriter(file);
-            printWriter.printf("%s %s %s", id, name, surname);
-            System.out.println(file.getName() + " is edited");
-            printWriter.close();
+            System.out.println(file.getName() + " is created with default path");
         }
 
 
     }
 
-    public static void createUser(User user) {
-        user.setId(1);
-        user.setName("Oleh");
-        user.setSurname("Ivaniv");
+    UserManager(String pathToFile) throws FileNotFoundException {
+        File file = new File(pathToFile);
+
+        if (file.exists()) {
+            System.out.println(file.getName() + " exist, we can't create new");
+
+        } else {
+            System.out.println(file.getName() + " is created with default path");
+        }
+
+
+    }
+
+    public static void createUser(User user1) throws FileNotFoundException {
+
+        int id = user1.getId();
+        String name = user1.getName();
+        String surname = user1.getSurname();
+        PrintWriter printWriter = new PrintWriter(file);
+
+
+        if (file.length()==0){
+            printWriter.printf("%s,%s,%s", id, name, surname);
+            printWriter.println();
+            System.out.println(file.getName() + " is created");
+        }else {
+            printWriter.printf("%s,%s,%s", id, name, surname);
+            printWriter.println();
+            System.out.println(file.getName() + " is edited");
+        }
+
+        printWriter.close();
     }
 
     public User getUser(int id) {
-        User user = new User();
-        return user;
+        String name = "Oleh";
+        String surname = "Ivaniv";
+
+        User resultUser = new User();
+        resultUser.setId(id);
+        resultUser.setName(name);
+        resultUser.setSurname(surname);
+
+        return resultUser;
     }
 }

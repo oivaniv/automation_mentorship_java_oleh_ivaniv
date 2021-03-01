@@ -14,18 +14,15 @@ public class Calculator {
                 break;
             case SUBTRACT:
                 operationResult = firstEnteredValue - secondEnteredValue;
-                System.out.println(operationResult);
                 break;
             case MULTIPLICATION:
                 operationResult = firstEnteredValue * secondEnteredValue;
-                System.out.println(operationResult);
                 break;
             case DIVISION:
                 if (secondEnteredValue == 0) {
                     throw new IllegalArgumentException("Second entered value can't be 0!");
                 } else {
                     operationResult = firstEnteredValue / secondEnteredValue;
-                    System.out.println(operationResult);
                 }
                 break;
         }
