@@ -12,38 +12,38 @@ import static Lesson_4.fileEditor.java.UserManager.DEFAULT_PATH;
 
 public class DefaultPathTest extends BaseTestClass {
 
-    @Test(testName = "Verify entering the test data")
-    public void createFileTest() throws IOException {
+    @Test(testName = "Verify creating new file the test data")
+    public void createFileTest() {
         User expectedUser = new User();
         expectedUser.setId(1);
         expectedUser.setName("Oleh");
         expectedUser.setSurname("Ivaniv");
 
         UserManager userManager = new UserManager();
-        userManager.createUser(expectedUser);
+        UserManager.createUser(expectedUser);
     }
 
-    @Test(testName = "Verify entering the test data")
-    public void addDataToFileTest() throws IOException {
+    @Test(testName = "Verify adding the test data to the file")
+    public void addDataToFileTest() {
         User expectedUser2 = new User();
         expectedUser2.setId(2);
         expectedUser2.setName("Ivan");
         expectedUser2.setSurname("Baloh");
 
         UserManager userManager = new UserManager();
-        userManager.createUser(expectedUser2);
+        UserManager.createUser(expectedUser2);
     }
 
 
     @Test(testName = "Verify entering the test data")
-    public void enterDataTest() throws IOException {
+    public void enterDataTest() {
         User expectedUser = new User();
         expectedUser.setId(1);
         expectedUser.setName("Oleh");
         expectedUser.setSurname("Ivaniv");
 
         UserManager userManager = new UserManager();
-        userManager.createUser(expectedUser);
+        UserManager.createUser(expectedUser);
 
         User actualUser = new UserManager().getUser(expectedUser.getId());
         Assert.assertEquals(expectedUser.getId(), actualUser.getId());
@@ -51,8 +51,8 @@ public class DefaultPathTest extends BaseTestClass {
         Assert.assertEquals(expectedUser.getSurname(), actualUser.getSurname());
     }
 
-    @Test(testName = "Verify entering the test data")
-    public void deleteFileTest() throws IOException {
+    @Test(testName = "Verify deleting the file")
+    public void deleteFileTest() {
         System.out.println();
 
         File file = new File(DEFAULT_PATH);

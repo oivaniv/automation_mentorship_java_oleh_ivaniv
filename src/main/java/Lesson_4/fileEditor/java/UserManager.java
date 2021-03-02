@@ -15,9 +15,18 @@ public class UserManager {
     public static final String DEFAULT_PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt";
 
     static File file = new File(DEFAULT_PATH);
+    static PrintWriter printWriter;
+
+    static {
+        try {
+            printWriter = new PrintWriter(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
 
-    public UserManager() throws IOException {
+    public UserManager() {
         File file = new File(DEFAULT_PATH);
 
         if (file.exists()) {
@@ -30,7 +39,7 @@ public class UserManager {
 
     }
 
-    UserManager(String pathToFile) throws FileNotFoundException {
+    UserManager(String pathToFile) {
         File file = new File(pathToFile);
 
         if (file.exists()) {
@@ -43,22 +52,20 @@ public class UserManager {
 
     }
 
-    public static void createUser(User user1) throws FileNotFoundException {
+    public static void createUser(User user1) {
 
         int id = user1.getId();
         String name = user1.getName();
         String surname = user1.getSurname();
-        PrintWriter printWriter = new PrintWriter(file);
 
 
-        if (file.length()==0){
-            printWriter.printf("%s,%s,%s", id, name, surname);
-            printWriter.println();
-            System.out.println(file.getName() + " is created");
-        }else {
-            printWriter.printf("%s,%s,%s", id, name, surname);
-            printWriter.println();
+        if (file.length()!=0){
+            printWriter.printf("%s,%s,%s \r \n", id, name, surname);
             System.out.println(file.getName() + " is edited");
+
+        }else {
+            printWriter.printf("%s,%s,%s \r \n", id, name, surname);
+            System.out.println(file.getName() + " is created");
         }
 
         printWriter.close();

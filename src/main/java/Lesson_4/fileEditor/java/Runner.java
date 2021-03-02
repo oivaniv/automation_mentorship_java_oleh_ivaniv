@@ -23,9 +23,9 @@ public class Runner {
         expectedUser3.setSurname("Korec");
 
         UserManager userManager = new UserManager();
-        userManager.createUser(expectedUser1);
-        userManager.createUser(expectedUser2);
-        userManager.createUser(expectedUser3);
+       // userManager.createUser(expectedUser1);
+        UserManager.createUser(expectedUser2);
+        UserManager.createUser(expectedUser3);
 
 
 
