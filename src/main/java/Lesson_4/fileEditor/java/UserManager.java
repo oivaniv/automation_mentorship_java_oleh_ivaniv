@@ -2,11 +2,7 @@ package Lesson_4.fileEditor.java;
 
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Formatter;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,72 +10,75 @@ public class UserManager {
 
     public static final String DEFAULT_PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt";
 
-    static File file = new File(DEFAULT_PATH);
-    static PrintWriter printWriter;
+    private File file;
+    private PrintWriter printWriter;
+    private ArrayList<String> arrayList = new ArrayList<>();
 
-    static {
-        try {
-            printWriter = new PrintWriter(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+
+    public UserManager() throws FileNotFoundException {
+        initialize(DEFAULT_PATH);
     }
 
-
-    public UserManager() {
-        File file = new File(DEFAULT_PATH);
-
-        if (file.exists()) {
-            System.out.println(file.getName() + " exist, we can't create new");
-
-        } else {
-            System.out.println(file.getName() + " is created with default path");
-        }
-
-
+    public UserManager(String pathToFile) throws FileNotFoundException {
+        initialize(pathToFile);
     }
 
-    UserManager(String pathToFile) {
-        File file = new File(pathToFile);
-
-        if (file.exists()) {
-            System.out.println(file.getName() + " exist, we can't create new");
-
-        } else {
-            System.out.println(file.getName() + " is created with default path");
-        }
-
-
+    public void initialize(String path) throws FileNotFoundException {
+        file = new File(path);
+        printWriter = new PrintWriter(file);
     }
 
-    public static void createUser(User user1) {
+    public void createUser(User user1) {
 
         int id = user1.getId();
         String name = user1.getName();
         String surname = user1.getSurname();
 
 
-        if (file.length()!=0){
-            printWriter.printf("%s,%s,%s \r \n", id, name, surname);
+        if (file.length() != 0) {
+            printWriter.printf("%s,%s,%s\r\n", id, name, surname);
+            printWriter.flush();
+
             System.out.println(file.getName() + " is edited");
 
-        }else {
-            printWriter.printf("%s,%s,%s \r \n", id, name, surname);
+        } else {
+            printWriter.printf("%s,%s,%s\r\n", id, name, surname);
+            printWriter.flush();
+
             System.out.println(file.getName() + " is created");
         }
 
         printWriter.close();
+
+
     }
 
-    public User getUser(int id) {
-        String name = "Oleh";
-        String surname = "Ivaniv";
+    public User getUser(int id) throws FileNotFoundException {
 
+        Scanner scanner = new Scanner(new File("C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt"));
         User resultUser = new User();
-        resultUser.setId(id);
-        resultUser.setName(name);
-        resultUser.setSurname(surname);
 
+        while (scanner.hasNextLine()) {
+            String data = scanner.nextLine();
+
+            String[] tmpArray = data.split(",");
+            Collections.addAll(arrayList, tmpArray);
+
+            //Here we combine the user info from file and id from parameters
+            int tmpId = Integer.parseInt(arrayList.get(0));
+            String tmpName = arrayList.get(1);
+            String tmpSurname = arrayList.get(2);
+            if (id == tmpId) {
+                resultUser.setId(tmpId);
+                resultUser.setName(tmpName);
+                resultUser.setSurname(tmpSurname);
+                System.out.println("We found the user with this ID: " + id);
+                break;
+            } else {
+                arrayList.clear();
+            }
+            System.out.println("There is no such user with this ID: " + id);
+        }
         return resultUser;
     }
 }

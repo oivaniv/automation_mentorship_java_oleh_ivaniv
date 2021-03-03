@@ -32,6 +32,7 @@ public class DivisionOperationTest extends BaseTestClass {
         calculator.calculator(2.0, 0.0, CalculatorOperations.DIVISION);
     }
 
+
     @Test(testName = "Verify entering two minus values for division operation")
     public void twoMinusValuesForDivisionOperation() {
         Assert.assertEquals(calculator.calculator(-10.0, -2.0, CalculatorOperations.DIVISION), 5.0);

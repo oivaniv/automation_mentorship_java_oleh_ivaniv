@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static Lesson_4.fileEditor.java.UserManager.DEFAULT_PATH;
@@ -13,37 +14,34 @@ import static Lesson_4.fileEditor.java.UserManager.DEFAULT_PATH;
 public class DefaultPathTest extends BaseTestClass {
 
     @Test(testName = "Verify creating new file the test data")
-    public void createFileTest() {
+    public void createFileTest() throws FileNotFoundException {
         User expectedUser = new User();
         expectedUser.setId(1);
         expectedUser.setName("Oleh");
         expectedUser.setSurname("Ivaniv");
 
-        UserManager userManager = new UserManager();
-        UserManager.createUser(expectedUser);
+        new UserManager().createUser(expectedUser);
     }
 
     @Test(testName = "Verify adding the test data to the file")
-    public void addDataToFileTest() {
+    public void addDataToFileTest() throws FileNotFoundException {
         User expectedUser2 = new User();
         expectedUser2.setId(2);
         expectedUser2.setName("Ivan");
         expectedUser2.setSurname("Baloh");
 
-        UserManager userManager = new UserManager();
-        UserManager.createUser(expectedUser2);
+        new UserManager().createUser(expectedUser2);
     }
 
 
     @Test(testName = "Verify entering the test data")
-    public void enterDataTest() {
+    public void enterDataTest() throws IOException {
         User expectedUser = new User();
         expectedUser.setId(1);
         expectedUser.setName("Oleh");
         expectedUser.setSurname("Ivaniv");
 
-        UserManager userManager = new UserManager();
-        UserManager.createUser(expectedUser);
+        new UserManager().createUser(expectedUser);
 
         User actualUser = new UserManager().getUser(expectedUser.getId());
         Assert.assertEquals(expectedUser.getId(), actualUser.getId());
@@ -59,7 +57,6 @@ public class DefaultPathTest extends BaseTestClass {
         if (file.exists()) {
             file.delete();
             System.out.println(file.getName() + " is deleted");
-
         } else {
             System.out.println("No such file - " + file.getName());
         }

@@ -1,11 +1,19 @@
 package Lesson_4.fileEditor.java;
 
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class Runner {
 
 
     public static void main(String[] args) throws IOException {
+
+        Runner runner = new Runner();
+        runner.nonStaticMethod();
+    }
+
+    public void nonStaticMethod() throws FileNotFoundException {
 
         User expectedUser1 = new User();
         expectedUser1.setId(1);
@@ -23,12 +31,9 @@ public class Runner {
         expectedUser3.setSurname("Korec");
 
         UserManager userManager = new UserManager();
-       // userManager.createUser(expectedUser1);
-        UserManager.createUser(expectedUser2);
-        UserManager.createUser(expectedUser3);
-
-
-
-
+        userManager.createUser(expectedUser1);
+        userManager.createUser(expectedUser2);
+        userManager.createUser(expectedUser3);
+        userManager.getUser(5);
     }
 }
