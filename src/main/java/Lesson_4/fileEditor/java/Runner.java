@@ -1,6 +1,8 @@
 package Lesson_4.fileEditor.java;
 
 
+import Lesson_4.fileEditor.test.TestHelper;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
@@ -13,7 +15,7 @@ public class Runner {
         runner.nonStaticMethod();
     }
 
-    public void nonStaticMethod() throws FileNotFoundException {
+    public void nonStaticMethod() throws IOException {
 
         User expectedUser1 = new User();
         expectedUser1.setId(1);
@@ -32,8 +34,11 @@ public class Runner {
 
         UserManager userManager = new UserManager();
         userManager.createUser(expectedUser1);
-        userManager.createUser(expectedUser2);
-        userManager.createUser(expectedUser3);
-        userManager.getUser(5);
+//        userManager.createUser(expectedUser2);
+//        userManager.createUser(expectedUser3);
+
+        TestHelper testHelper = new TestHelper();
+        testHelper.deleteFileTest();
+        //userManager.getUser(5);
     }
 }

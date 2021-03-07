@@ -4,16 +4,13 @@ package Lesson_4.fileEditor.java;
 import java.io.*;
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
 
 public class UserManager {
 
     public static final String DEFAULT_PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt";
 
     private File file;
-    private PrintWriter printWriter;
-    private ArrayList<String> arrayList = new ArrayList<>();
-
+    private FileWriter printWriter;
 
     public UserManager() throws FileNotFoundException {
         initialize(DEFAULT_PATH);
@@ -25,60 +22,38 @@ public class UserManager {
 
     public void initialize(String path) throws FileNotFoundException {
         file = new File(path);
-        printWriter = new PrintWriter(file);
     }
 
-    public void createUser(User user1) {
+    public void createUser(User user) throws IOException {
 
-        int id = user1.getId();
-        String name = user1.getName();
-        String surname = user1.getSurname();
+        printWriter = new FileWriter(file, true);
+        BufferedWriter bw = new BufferedWriter(printWriter);
 
-
-        if (file.length() != 0) {
-            printWriter.printf("%s,%s,%s\r\n", id, name, surname);
-            printWriter.flush();
-
-            System.out.println(file.getName() + " is edited");
-
-        } else {
-            printWriter.printf("%s,%s,%s\r\n", id, name, surname);
-            printWriter.flush();
-
-            System.out.println(file.getName() + " is created");
-        }
-
-        printWriter.close();
-
-
+        //System.out.println("Data about user ID = " + user.getId() + ", name = " + user.getName() + ", surname = " + user.getSurname() + "was added to file " + file.getName());
+        System.out.println(String.format("Data about user ID = %1$s, name = ,%2$s, surname = %3$s was added to file %4$s", user.getId(), user.getName(), user.getSurname(), file.getName()));
+        bw.write(String.format("%1$s,%2$s,%3$s", user.getId(), user.getName(), user.getSurname()));
+        bw.newLine();
+        bw.close();
     }
+
+
+
 
     public User getUser(int id) throws FileNotFoundException {
 
         Scanner scanner = new Scanner(new File("C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt"));
-        User resultUser = new User();
+        User foundUser = null;
 
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
-
-            String[] tmpArray = data.split(",");
-            Collections.addAll(arrayList, tmpArray);
-
-            //Here we combine the user info from file and id from parameters
-            int tmpId = Integer.parseInt(arrayList.get(0));
-            String tmpName = arrayList.get(1);
-            String tmpSurname = arrayList.get(2);
-            if (id == tmpId) {
-                resultUser.setId(tmpId);
-                resultUser.setName(tmpName);
-                resultUser.setSurname(tmpSurname);
-                System.out.println("We found the user with this ID: " + id);
-                break;
-            } else {
-                arrayList.clear();
+            String[] fileDataArray = data.split(",");
+            if (id == Integer.parseInt(fileDataArray[0])) {
+                foundUser = new User();
+                foundUser.setId(Integer.parseInt(fileDataArray[0]));
+                foundUser.setName(fileDataArray[1]);
+                foundUser.setSurname(fileDataArray[2]);
             }
-            System.out.println("There is no such user with this ID: " + id);
         }
-        return resultUser;
+        return foundUser;
     }
 }

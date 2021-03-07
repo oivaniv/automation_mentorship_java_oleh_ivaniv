@@ -14,7 +14,7 @@ import static Lesson_4.fileEditor.java.UserManager.DEFAULT_PATH;
 public class DefaultPathTest extends BaseTestClass {
 
     @Test(testName = "Verify creating new file the test data")
-    public void createFileTest() throws FileNotFoundException {
+    public void createFileTest() throws IOException {
         User expectedUser = new User();
         expectedUser.setId(1);
         expectedUser.setName("Oleh");
@@ -24,7 +24,7 @@ public class DefaultPathTest extends BaseTestClass {
     }
 
     @Test(testName = "Verify adding the test data to the file")
-    public void addDataToFileTest() throws FileNotFoundException {
+    public void addDataToFileTest() throws IOException {
         User expectedUser2 = new User();
         expectedUser2.setId(2);
         expectedUser2.setName("Ivan");
