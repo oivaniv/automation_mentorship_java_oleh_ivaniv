@@ -8,6 +8,9 @@ import java.io.IOException;
 
 public class Runner {
 
+    public static final String DEFAULT_PATH = "C:\\Users\\oivaniv\\Documents\\NewTestFile1.txt";
+
+
 
     public static void main(String[] args) throws IOException {
 
@@ -32,13 +35,21 @@ public class Runner {
         expectedUser3.setName("Pavlo");
         expectedUser3.setSurname("Korec");
 
-        UserManager userManager = new UserManager();
-        userManager.createUser(expectedUser1);
+//        UserManager userManager = new UserManager();
+//        userManager.createUser(expectedUser1);
 //        userManager.createUser(expectedUser2);
 //        userManager.createUser(expectedUser3);
 
         TestHelper testHelper = new TestHelper();
-        testHelper.deleteFileTest();
+
+        //testHelper.setOneUserToFile(DEFAULT_PATH, 1, "Olha", "Ivaniv");
+
+        //testHelper.setManyUsersToFile(DEFAULT_PATH,10);
+
+        //testHelper.readDataFromFile(DEFAULT_PATH,3);
+        //System.out.println(testHelper.readDataFromFile(DEFAULT_PATH,3));
+
+        //testHelper.deleteFileTest(DEFAULT_PATH);
         //userManager.getUser(5);
     }
 }
