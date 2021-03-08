@@ -23,5 +23,6 @@ public class BaseTestClass {
         System.out.println("Finished next test - " + method.getName());
         System.out.println("-----------------Test case is finished-----------------");
         System.out.println();
+
     }
 }
