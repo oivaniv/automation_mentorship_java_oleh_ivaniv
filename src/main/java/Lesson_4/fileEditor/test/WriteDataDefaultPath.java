@@ -19,6 +19,8 @@ public class WriteDataDefaultPath extends BaseTestClass {
 
     @Test(testName = "Verify creating empty file", groups ="REQUIRES_FILE_DELETE")
     public void createFileWithoutDataInFileTest() throws IOException {
+        testHelper.deleteFile(DEFAULT_PATH);
+
         file = new File(DEFAULT_PATH);
         User expectedUser1 = new User();
 

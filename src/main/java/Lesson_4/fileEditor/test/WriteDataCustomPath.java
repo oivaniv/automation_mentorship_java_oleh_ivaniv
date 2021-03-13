@@ -17,8 +17,11 @@ public class WriteDataCustomPath extends BaseTestClass{
 
     private static final String PATH1 = "C:\\Users\\oivaniv\\Documents\\NewCustomTestFile1.txt";
 
-    @Test(testName = "Verify creating empty file", groups ="REQUIRES_FILE_DELETE", dependsOnMethods ="deleteFileTest")
+    @Test(testName = "Verify creating empty file", groups ="REQUIRES_FILE_DELETE", alwaysRun = true)
     public void createFileWithoutDataInFileTest() throws IOException {
+
+        testHelper.deleteFile(PATH1);
+
         file = new File(PATH1);
         User expectedUser1 = new User();
 

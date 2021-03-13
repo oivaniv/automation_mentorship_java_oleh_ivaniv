@@ -125,6 +125,10 @@ public class TestHelper {
         return lineOfFile;
     }
 
+    //Rewrite readFromFile to return User instance instead of String!!!!!!!
+
+
+
     /**
      * This method is used to read user id form the file
      * @param pathTofFile - file location parameter
