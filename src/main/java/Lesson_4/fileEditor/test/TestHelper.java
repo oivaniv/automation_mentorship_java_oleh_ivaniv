@@ -3,6 +3,9 @@ package Lesson_4.fileEditor.test;
 import Lesson_4.fileEditor.java.User;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -29,6 +32,17 @@ public class TestHelper {
             System.out.println("No such file - " + file.getName());
         }
     }
+
+    // Need to investigate, why i can't delete the file by default delete (The process cannot access the file because it is being used by another process)
+//    public void newDeleteFile(String pathToFile) throws IOException {
+//        System.out.println();
+//        Path CUSTOM_PATH = Paths.get(pathToFile);
+//        if(Files.exists(CUSTOM_PATH)){
+//            Files.delete(CUSTOM_PATH);
+//            System.out.println(CUSTOM_PATH.getFileName()+ " is deleted");
+//        }
+//        System.out.println("No such file - " + CUSTOM_PATH.getFileName());
+//    }
 
     public void createFile(String pathToFile) throws IOException {
         file = new File(pathToFile);
@@ -98,6 +112,7 @@ public class TestHelper {
             bw.newLine();
         }
         bw.close();
+        printWriter.close();
     }
 
     /**
@@ -107,22 +122,22 @@ public class TestHelper {
      * @return one line of file as one String in format "id,name,surname"
      * @throws FileNotFoundException
      */
-    public String readLineFromFile(String pathToFile, int id) throws FileNotFoundException {
+    public static User readLineFromFile(String pathToFile, int id) throws FileNotFoundException {
 
         Scanner scanner = new Scanner(new File(pathToFile));
-        String lineOfFile = null;
+        User userFromFile = new User();
 
         while (scanner.hasNextLine()) {
             String data = scanner.nextLine();
             String[] fileDataArray = data.split(",");
             if (id == Integer.parseInt(fileDataArray[0])) {
-                int identifier = (Integer.parseInt(fileDataArray[0]));
-                String name = fileDataArray[1];
-                String surname = fileDataArray[2];
-                lineOfFile = identifier + "," + name + "," + surname;
+                userFromFile.setId((Integer.parseInt(fileDataArray[0])));
+                userFromFile.setName(fileDataArray[1]);
+                userFromFile.setSurname(fileDataArray[2]);
             }
         }
-        return lineOfFile;
+        scanner.close();
+        return userFromFile;
     }
 
     //Rewrite readFromFile to return User instance instead of String!!!!!!!
@@ -136,7 +151,7 @@ public class TestHelper {
      * @return user id from line which was found by specific user id as String
      * @throws FileNotFoundException
      */
-    public int readIdFromFile(String pathTofFile, int id) throws FileNotFoundException {
+    public static int readIdFromFile(String pathTofFile, int id) throws FileNotFoundException {
 
         Scanner scanner = new Scanner(new File(pathTofFile));
         int identificator = 0;
@@ -201,7 +216,7 @@ public class TestHelper {
      * @return the latest user's id in the file
      * @throws FileNotFoundException
      */
-    public int findLastIdFromFile(String pathTofFile) throws FileNotFoundException {
+    public static int findLastIdFromFile(String pathTofFile) throws FileNotFoundException {
 
         Scanner scanner = new Scanner(new File(pathTofFile));
         int lastId = 0;
@@ -213,6 +228,7 @@ public class TestHelper {
                 lastId = Integer.parseInt(fileDataArray[0]);
             }
         }
+        scanner.close();
         return lastId;
     }
 

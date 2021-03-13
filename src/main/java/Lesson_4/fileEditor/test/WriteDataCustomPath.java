@@ -8,25 +8,24 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class WriteDataCustomPath extends BaseTestClass{
-    File file;
-    UserManager userManager;
-    TestHelper testHelper = new TestHelper();
+public class WriteDataCustomPath extends BaseTestClass {
 
+    String userFolderPath = System.getProperty("user.home");
     private static final String PATH1 = "C:\\Users\\oivaniv\\Documents\\NewCustomTestFile1.txt";
+    private final String customPath = userFolderPath+"\\Documents\\NewCustomTestFile1.txt";
 
-    @Test(testName = "Verify creating empty file", groups ="REQUIRES_FILE_DELETE", alwaysRun = true)
+    File file = new File(customPath);
+    UserManager userManager = new UserManager(PATH1);
+
+    public WriteDataCustomPath() throws FileNotFoundException {
+    }
+
+    @Test(testName = "Verify creating empty file", groups = "REQUIRES_FILE_DELETE", alwaysRun = true)
     public void createFileWithoutDataInFileTest() throws IOException {
-
-        testHelper.deleteFile(PATH1);
-
-        file = new File(PATH1);
-        User expectedUser1 = new User();
-
-        userManager = new UserManager(PATH1);
-        userManager.createUser(expectedUser1);
+        userManager.createUser(UserRepository.getEmptyUser());
 
         Assert.assertTrue(file.exists());
         Assert.assertEquals(file.length(), 0);
@@ -34,38 +33,15 @@ public class WriteDataCustomPath extends BaseTestClass{
 
     @Test(testName = "Verify creating the file and adding correct the test data")
     public void createFileAndAddDataToFileTest() throws IOException {
-
-        User expectedUser = new User();
-        userManager = new UserManager(PATH1);
-
-        expectedUser.setId(1);
-        expectedUser.setName("Ivan");
-        expectedUser.setSurname("Baloh");
-
-        userManager.createUser(expectedUser);
-
-        Assert.assertEquals(expectedUser.getId()+","+expectedUser.getName()+","+expectedUser.getSurname(), testHelper.readLineFromFile(PATH1, 1));
+        userManager.createUser(UserRepository.getDefaultValidUser());
+        TestUtilities.assertUserData(UserRepository.getDefaultValidUser(), TestHelper.readLineFromFile(PATH1, 1));
     }
 
-    @Test(testName = "Verify entering the test data to exist file", dependsOnMethods = "createFileAndAddDataToFileTest")
+    @Test(testName = "Verify entering the test data to exist file", groups = "REQUIRES_CREATED_FILE")
     public void enterDataInExistFileTest() throws IOException {
-        file = new File(PATH1);
-        TestHelper testHelper = new TestHelper();
-        User expectedUser = new User();
-        userManager = new UserManager(PATH1);
-
-        expectedUser.setId(testHelper.findLastIdFromFile(PATH1)+1);
-        expectedUser.setName("Oleh");
-        expectedUser.setSurname("Ivaniv");
-
-        userManager.createUser(expectedUser);
-
-        Assert.assertEquals(expectedUser.getId()+","+expectedUser.getName()+","+expectedUser.getSurname(),
-                testHelper.readLineFromFile(PATH1, testHelper.findLastIdFromFile(PATH1)));
-    }
-
-    @Test(testName = "Verify deleting the file")
-    public void deleteFileTest() {
-        testHelper.deleteFile(PATH1);
+        User actualUser = UserRepository.getUserWithCustomId(TestHelper.findLastIdFromFile(PATH1) + 1);
+        userManager.createUser(actualUser);
+        User expectedUser = TestHelper.readLineFromFile(PATH1, TestHelper.findLastIdFromFile(PATH1));
+        TestUtilities.assertUserData(actualUser, expectedUser);
     }
 }

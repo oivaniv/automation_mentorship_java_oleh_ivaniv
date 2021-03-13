@@ -28,9 +28,8 @@ public class UserManager {
     /**
      *
      * @param pathToFile - is the path to the file which we want to create
-     * @throws FileNotFoundException
      */
-    public void initialize(String pathToFile) throws FileNotFoundException {
+    public void initialize(String pathToFile) {
         file = new File(pathToFile);
     }
 
@@ -48,10 +47,11 @@ public class UserManager {
         if (user.getId()==0||user.getName()==null||user.getSurname()==null){
             System.out.println("Wrong user data, can't add it to the file");
         }else {
-            System.out.println(String.format("Data about user ID = %1$s, name = ,%2$s, surname = %3$s was added to file %4$s", user.getId(), user.getName(), user.getSurname(), file.getName()));
+            System.out.printf("Data about user ID = %1$s, name = ,%2$s, surname = %3$s was added to file %4$s%n", user.getId(), user.getName(), user.getSurname(), file.getName());
             bw.write(String.format("%1$s,%2$s,%3$s", user.getId(), user.getName(), user.getSurname()));
             bw.newLine();
             bw.close();
+            printWriter.close();
         }
     }
 
