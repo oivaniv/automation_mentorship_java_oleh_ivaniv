@@ -14,11 +14,10 @@ import java.io.IOException;
 public class WriteDataCustomPath extends BaseTestClass {
 
     String userFolderPath = System.getProperty("user.home");
-    private static final String PATH1 = "C:\\Users\\oivaniv\\Documents\\NewCustomTestFile1.txt";
     private final String customPath = userFolderPath+"\\Documents\\NewCustomTestFile1.txt";
 
     File file = new File(customPath);
-    UserManager userManager = new UserManager(PATH1);
+    UserManager userManager = new UserManager(customPath);
 
     public WriteDataCustomPath() throws FileNotFoundException {
     }
@@ -34,14 +33,14 @@ public class WriteDataCustomPath extends BaseTestClass {
     @Test(testName = "Verify creating the file and adding correct the test data")
     public void createFileAndAddDataToFileTest() throws IOException {
         userManager.createUser(UserRepository.getDefaultValidUser());
-        TestUtilities.assertUserData(UserRepository.getDefaultValidUser(), TestHelper.readLineFromFile(PATH1, 1));
+        TestUtilities.assertUserData(UserRepository.getDefaultValidUser(), TestHelper.readLineFromFile(customPath, 1));
     }
 
     @Test(testName = "Verify entering the test data to exist file", groups = "REQUIRES_CREATED_FILE")
     public void enterDataInExistFileTest() throws IOException {
-        User actualUser = UserRepository.getUserWithCustomId(TestHelper.findLastIdFromFile(PATH1) + 1);
+        User actualUser = UserRepository.getUserWithCustomId(TestHelper.findLastIdFromFile(customPath) + 1);
         userManager.createUser(actualUser);
-        User expectedUser = TestHelper.readLineFromFile(PATH1, TestHelper.findLastIdFromFile(PATH1));
+        User expectedUser = TestHelper.readLineFromFile(customPath, TestHelper.findLastIdFromFile(customPath));
         TestUtilities.assertUserData(actualUser, expectedUser);
     }
 }

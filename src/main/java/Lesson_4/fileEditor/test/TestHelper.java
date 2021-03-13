@@ -3,14 +3,10 @@ package Lesson_4.fileEditor.test;
 import Lesson_4.fileEditor.java.User;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-
 
 public class TestHelper {
 
@@ -32,17 +28,6 @@ public class TestHelper {
             System.out.println("No such file - " + file.getName());
         }
     }
-
-    // Need to investigate, why i can't delete the file by default delete (The process cannot access the file because it is being used by another process)
-//    public void newDeleteFile(String pathToFile) throws IOException {
-//        System.out.println();
-//        Path CUSTOM_PATH = Paths.get(pathToFile);
-//        if(Files.exists(CUSTOM_PATH)){
-//            Files.delete(CUSTOM_PATH);
-//            System.out.println(CUSTOM_PATH.getFileName()+ " is deleted");
-//        }
-//        System.out.println("No such file - " + CUSTOM_PATH.getFileName());
-//    }
 
     public void createFile(String pathToFile) throws IOException {
         file = new File(pathToFile);
