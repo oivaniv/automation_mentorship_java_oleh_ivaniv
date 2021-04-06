@@ -20,7 +20,7 @@ public class Runner {
 //
 //        createTableJDBC.deleteTableJDBC("devices");
 
-        writeDataToJDBC.batchInsertToJDBC();
+        writeDataToJDBC.batchInsertToJDBCWithNewConnection();
 
 
     }
