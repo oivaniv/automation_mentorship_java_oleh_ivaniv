@@ -8,6 +8,7 @@ import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static Lesson_10_RestTemplate.UrlController.getStudentUrl;
@@ -57,13 +58,13 @@ public class GetTestRestTemplate {
         System.out.println("The status code is: " + httpStatusCode);
 
         Student[] student = responseEntity.getBody();
-        System.out.println("Student object is: " + student);
+        System.out.println("Student object is: " + Arrays.toString(student));
 
         assertThat(responseEntity.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
     @Test
-    public void getStudentByBaeldung(){
+    public void getStudentByBaeldung() {
         ResponseEntity<String> response
                 = restTemplate.getForEntity(getStudentUrl, String.class);
         System.out.println(response.getStatusCode());
@@ -85,19 +86,19 @@ public class GetTestRestTemplate {
     }
 
     @Test
-    public void getStudentByBaeldungAndParse() throws JsonProcessingException {
+    public void getStudentByBaeldungAndParse() {
         Students[] students
                 = restTemplate.getForObject(getStudentUrl, Students[].class);
 
-        System.out.println(students);
+        System.out.println(Arrays.toString(students));
         //Need to investigate why no students as the string
 
     }
+
     @Test
-    public void getStudentByBaeldungAndParseAsList() throws JsonProcessingException {
+    public void getStudentByBaeldungAndParseAsList() {
         List students
                 = restTemplate.getForObject(getStudentUrl, List.class);
-
         System.out.println(students);
 
     }
