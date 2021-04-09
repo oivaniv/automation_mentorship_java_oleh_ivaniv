@@ -1,4 +1,4 @@
-package Lesson_9_Jersey_API;
+package Lesson_9_REST_Assured;
 
 
 import io.restassured.http.ContentType;

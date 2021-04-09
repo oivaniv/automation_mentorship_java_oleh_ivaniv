@@ -1,7 +1,6 @@
-package Lesson_9_Jersey_API;
+package Lesson_9_REST_Assured;
 
 import io.restassured.http.ContentType;
-import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;

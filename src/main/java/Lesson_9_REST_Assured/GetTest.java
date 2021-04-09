@@ -1,6 +1,5 @@
-package Lesson_9_Jersey_API;
+package Lesson_9_REST_Assured;
 
-import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
