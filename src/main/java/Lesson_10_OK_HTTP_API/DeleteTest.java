@@ -26,9 +26,10 @@ public class DeleteTest {
         Call call = client.newCall(request);
         Response response = call.execute();
 
+        System.out.println(response.body().string());
+
         assertThat(response.code(), equalTo(200));
 
-        System.out.println(response.body().string());
     }
 
 }

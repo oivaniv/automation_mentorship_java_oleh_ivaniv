@@ -67,8 +67,8 @@ public class GetTestRestTemplate {
     public void getStudentByBaeldung() {
         ResponseEntity<String> response
                 = restTemplate.getForEntity(getStudentUrl, String.class);
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getBody());
+        System.out.println("Status code is: " + response.getStatusCode());
+        System.out.println("Raw body value is: " + response.getBody());
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
     }
 
@@ -76,30 +76,31 @@ public class GetTestRestTemplate {
     public void getStudentByBaeldungAndCheckValue() throws JsonProcessingException {
         ResponseEntity<String> response
                 = restTemplate.getForEntity(getStudentUrl, String.class);
-        System.out.println(response.getStatusCode());
-        System.out.println(response.getBody());
 
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(response.getBody());
-        JsonNode name = root.path("name");
+        JsonNode name = root.path(0).path("name");
+        System.out.println("Raw body value is: " + root.toString());
+        System.out.println("Name of user: " + root.path(0).path("name"));
         assertThat(name.asText(), notNullValue());
     }
 
     @Test
     public void getStudentByBaeldungAndParse() {
-        Students[] students
-                = restTemplate.getForObject(getStudentUrl, Students[].class);
+        Student[] student
+                = restTemplate.getForObject(getStudentUrl, Student[].class);
 
-        System.out.println(Arrays.toString(students));
+        System.out.println(Arrays.toString(student));
+
         //Need to investigate why no students as the string
-
+        //Solution - need to add Arrays.toString, cause we receive array not the value.
     }
 
     @Test
     public void getStudentByBaeldungAndParseAsList() {
-        List students
+        List student
                 = restTemplate.getForObject(getStudentUrl, List.class);
-        System.out.println(students);
+        System.out.println(student);
 
     }
 }
