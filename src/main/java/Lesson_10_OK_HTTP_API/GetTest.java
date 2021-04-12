@@ -23,6 +23,7 @@ public class GetTest {
         Call call = client.newCall(request);
         Response response = call.execute();
 
+
         assertThat(response.code(), equalTo(200));
 
         System.out.println(response.body().string());

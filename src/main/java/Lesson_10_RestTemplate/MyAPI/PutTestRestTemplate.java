@@ -29,7 +29,7 @@ public class PutTestRestTemplate {
         HttpEntity<Object> requestEntity = new HttpEntity<>(StudentsRepository.createPredefinedStudent(), headers);
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        ResponseEntity<String> responseEntity = restTemplate.exchange(getStudentUrl+"/20",
+        ResponseEntity<String> responseEntity = restTemplate.exchange(getStudentUrl + "/20",
                 HttpMethod.PUT,
                 requestEntity,
                 String.class);

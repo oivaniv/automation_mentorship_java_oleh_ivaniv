@@ -90,6 +90,9 @@ public class GetTestRestTemplate {
         Student[] student
                 = restTemplate.getForObject(getStudentUrl, Student[].class);
 
+        //student[0] - to get User
+
+
         System.out.println(Arrays.toString(student));
 
         //Need to investigate why no students as the string

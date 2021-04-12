@@ -66,7 +66,7 @@ public class GetTestRestTemplate {
     //Solution 2 - use List - doesn't work
     @Test(testName = "Verify all users")
     public void verifyGETAllUsersByIdAndParse() {
-        List users
+        List<UserInfo> users
                 = restTemplate.getForObject(getAllUsersListUrl, List.class);
         System.out.println(users);
         //Need to investigate why no students as the string
