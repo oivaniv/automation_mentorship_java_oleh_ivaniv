@@ -1,4 +1,4 @@
-package Lesson_10_RestTemplate;
+package Lesson_10_RestTemplate.ReqresAPI;
 
 import Lesson_8_QueryDSL.student.Student;
 import org.springframework.http.*;
@@ -6,9 +6,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.Test;
 
-import static Lesson_10_RestTemplate.UrlController.*;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static Lesson_10_RestTemplate.MyAPI.UrlController.deleteStudentByIdUrl;
 
 public class DeleteTestRestTemplate {
     static RestTemplate restTemplate = new RestTemplate();

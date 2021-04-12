@@ -1,6 +1,6 @@
-package Lesson_4.calculator.test;
+package Lesson_10_RestTemplate.MyAPI;
 
-import Lesson_10_RestTemplate.StudentsRepository;
+import Lesson_10_RestTemplate.MyAPI.StudentsRepository;
 import Lesson_8_QueryDSL.student.Student;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -8,8 +8,7 @@ import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 
-import static Lesson_10_RestTemplate.UrlController.getStudentUrl;
-import static Lesson_10_RestTemplate.UrlController.postStudentUrl;
+import static Lesson_10_RestTemplate.MyAPI.UrlController.getStudentUrl;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 

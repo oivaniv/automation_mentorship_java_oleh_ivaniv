@@ -1,5 +1,6 @@
-package Lesson_10_RestTemplate;
+package Lesson_10_RestTemplate.ReqresAPI;
 
+import Lesson_10_RestTemplate.MyAPI.StudentsRepository;
 import Lesson_8_QueryDSL.student.Student;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
@@ -7,7 +8,7 @@ import org.testng.annotations.Test;
 
 import java.net.URI;
 
-import static Lesson_10_RestTemplate.UrlController.postStudentUrl;
+import static Lesson_10_RestTemplate.MyAPI.UrlController.postStudentUrl;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 

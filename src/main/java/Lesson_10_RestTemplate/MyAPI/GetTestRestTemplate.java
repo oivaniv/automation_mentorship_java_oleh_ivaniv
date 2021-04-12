@@ -1,4 +1,4 @@
-package Lesson_10_RestTemplate;
+package Lesson_10_RestTemplate.MyAPI;
 
 import Lesson_8_QueryDSL.student.Student;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static Lesson_10_RestTemplate.UrlController.getStudentUrl;
+import static Lesson_10_RestTemplate.MyAPI.UrlController.getStudentUrl;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -94,6 +94,7 @@ public class GetTestRestTemplate {
 
         //Need to investigate why no students as the string
         //Solution - need to add Arrays.toString, cause we receive array not the value.
+        //Question - what i should do with this DTO to use assert?
     }
 
     @Test

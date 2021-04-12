@@ -1,4 +1,4 @@
-package Lesson_10_RestTemplate;
+package Lesson_10_RestTemplate.MyAPI;
 
 import Lesson_8_QueryDSL.student.Student;
 
