@@ -1,10 +1,8 @@
-package Lesson_10_RestTemplate.ReqresAPI;
+package Lesson_10_RestTemplate.ReqresAPI.tests;
 
 import Lesson_10_RestTemplate.ReqresAPI.dataModels.Data;
 import Lesson_10_RestTemplate.ReqresAPI.dataModels.UserInfo;
 import Lesson_10_RestTemplate.ReqresAPI.dataModels.UserInfoList;
-import Lesson_10_RestTemplate.ReqresAPI.userRepository.DataRepository;
-import Lesson_10_RestTemplate.ReqresAPI.userRepository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,18 +11,11 @@ import org.springframework.web.client.RestTemplate;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.List;
-
 import static Lesson_10_RestTemplate.ReqresAPI.UrlController.getAllUsersListUrl;
 import static Lesson_10_RestTemplate.ReqresAPI.UrlController.getUserUrlById;
 import static Lesson_10_RestTemplate.ReqresAPI.userRepository.DataRepository.createDataWithId7;
-import static Lesson_10_RestTemplate.ReqresAPI.userRepository.SupportRepository.createSupport;
 import static Lesson_10_RestTemplate.ReqresAPI.userRepository.UserRepository.createUserWithId7;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.hamcrest.MatcherAssert.assertThat;
-
 
 public class GetTestRestTemplate extends BaseTestClass {
 

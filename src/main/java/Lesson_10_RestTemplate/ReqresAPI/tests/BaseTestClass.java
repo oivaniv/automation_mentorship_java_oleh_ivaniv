@@ -1,4 +1,4 @@
-package Lesson_10_RestTemplate.ReqresAPI;
+package Lesson_10_RestTemplate.ReqresAPI.tests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
