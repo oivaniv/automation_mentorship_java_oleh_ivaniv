@@ -1,8 +1,9 @@
 package Lesson_10_RestTemplate.ReqresAPI.dataModels;
 
 import java.io.Serializable;
+import java.util.Objects;
 
-public class data implements Serializable {
+public class Data implements Serializable {
     private int id;
     private String email;
     private String first_name;
@@ -58,5 +59,18 @@ public class data implements Serializable {
                 ", last_name='" + last_name + '\'' +
                 ", avatar='" + avatar + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Data data = (Data) o;
+        return id == data.id && Objects.equals(email, data.email) && Objects.equals(first_name, data.first_name) && Objects.equals(last_name, data.last_name) && Objects.equals(avatar, data.avatar);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, email, first_name, last_name, avatar);
     }
 }

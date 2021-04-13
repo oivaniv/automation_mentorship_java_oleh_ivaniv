@@ -1,13 +1,27 @@
 package Lesson_10_RestTemplate.ReqresAPI.dataModels;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class UserInfo implements Serializable {
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserInfo userInfo = (UserInfo) o;
+        return page == userInfo.page && per_page == userInfo.per_page && total == userInfo.total && Objects.equals(data, userInfo.data) && Objects.equals(support, userInfo.support);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(page, per_page, total, data, support);
+    }
+
     private int page;
     private int per_page;
     private int total;
-    private data data;
-    private support support;
+    private Data data;
+    private Support support;
 
     public int getPage() {
         return page;
@@ -33,19 +47,19 @@ public class UserInfo implements Serializable {
         this.total = total;
     }
 
-    public Lesson_10_RestTemplate.ReqresAPI.dataModels.data getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(Lesson_10_RestTemplate.ReqresAPI.dataModels.data data) {
+    public void setData(Data data) {
         this.data = data;
     }
 
-    public support getSupport() {
+    public Support getSupport() {
         return support;
     }
 
-    public void setSupport(support support) {
+    public void setSupport(Support support) {
         this.support = support;
     }
 

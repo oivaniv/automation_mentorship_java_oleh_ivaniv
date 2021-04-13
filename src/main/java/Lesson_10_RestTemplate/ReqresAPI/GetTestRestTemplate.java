@@ -1,7 +1,10 @@
 package Lesson_10_RestTemplate.ReqresAPI;
 
+import Lesson_10_RestTemplate.ReqresAPI.dataModels.Data;
 import Lesson_10_RestTemplate.ReqresAPI.dataModels.UserInfo;
 import Lesson_10_RestTemplate.ReqresAPI.dataModels.UserInfoList;
+import Lesson_10_RestTemplate.ReqresAPI.userRepository.DataRepository;
+import Lesson_10_RestTemplate.ReqresAPI.userRepository.UserRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -10,19 +13,22 @@ import org.springframework.web.client.RestTemplate;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static Lesson_10_RestTemplate.ReqresAPI.UrlController.getAllUsersListUrl;
 import static Lesson_10_RestTemplate.ReqresAPI.UrlController.getUserUrlById;
+import static Lesson_10_RestTemplate.ReqresAPI.userRepository.DataRepository.createDataWithId7;
+import static Lesson_10_RestTemplate.ReqresAPI.userRepository.SupportRepository.createSupport;
+import static Lesson_10_RestTemplate.ReqresAPI.userRepository.UserRepository.createUserWithId7;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
-public class GetTestRestTemplate {
+public class GetTestRestTemplate extends BaseTestClass {
 
     static RestTemplate restTemplate = new RestTemplate();
-    static HttpHeaders headers = new HttpHeaders();
 
     @Test(testName = "Verify existence of user data with id = 2")
     public void verifyGETUserByIdExist() {
@@ -30,84 +36,106 @@ public class GetTestRestTemplate {
                 = restTemplate.getForEntity(getUserUrlById(2), String.class);
         System.out.println("Status code is: " + response.getStatusCode());
         System.out.println("Raw body value is: " + response.getBody());
-        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
-    @Test(testName = "Verify name of user with id = 2")
+    @Test(testName = "Verify name of user with id = 2 by JsonNode")
     public void verifyGETUserByIdInfo() throws JsonProcessingException {
         ResponseEntity<String> response
                 = restTemplate.getForEntity(getUserUrlById(2), String.class);
-
         ObjectMapper mapper = new ObjectMapper();
         JsonNode root = mapper.readTree(response.getBody());
         JsonNode firstName = root.path("data").path("first_name");
         System.out.println("Raw body value is: " + root.toString());
         System.out.println("Name of user: " + firstName.asText());
+
         Assert.assertEquals(firstName.asText(), "Janet");
     }
 
-    @Test(testName = "Verify user data with id = 2")
-    public void verifyGETUserByIdAndParse() {
-        UserInfo userInfo
-                = restTemplate.getForObject(getUserUrlById(2), UserInfo.class);
-        System.out.println(userInfo);
-        //Need to investigate why no students as the string
-        //Solution - need to add Arrays.toString, cause we receive array not the value.
+    @Test(testName = "Show all data of user with ID 7")
+    public void showUsersIdAndParse() {
+        UserInfo actualUserData
+                = restTemplate.getForObject(getUserUrlById(7), UserInfo.class);
+        System.out.println("All user data info from JSON: " + actualUserData);
     }
 
-    //Solution 1 - to use DTO - doesn't work
-    @Test(testName = "Verify user data with id = 2")
-    public void verifyGETUserByIdAndParse1() {
-        UserInfo userInfo
-                = restTemplate.getForObject(getAllUsersListUrl, UserInfo.class);
-        System.out.println(userInfo);
+    @Test(testName = "Verify user data with id = 7")
+    public void showUserAndParseFields() {
+        UserInfo actualUserData
+                = restTemplate.getForObject(getUserUrlById(7), UserInfo.class);
+        System.out.println("User info from JSON: " + actualUserData);
+
+        //First way to show user data by fields
+        System.out.println("***First way to show user data***");
+        System.out.println("id: " + actualUserData.getData().getId());
+        System.out.println("email: " + actualUserData.getData().getEmail());
+        System.out.println("first_name: " + actualUserData.getData().getFirst_name());
+        System.out.println("last_name: " + actualUserData.getData().getLast_name());
+        System.out.println("avatar: " + actualUserData.getData().getAvatar());
+
+        System.out.println("***Second way to show user data***");
+        System.out.println("User data is: " + actualUserData.getData());
     }
 
-    //Solution 2 - use List - doesn't work
-    @Test(testName = "Verify all users")
-    public void verifyGETAllUsersByIdAndParse() {
-        List<UserInfo> users
-                = restTemplate.getForObject(getAllUsersListUrl, List.class);
-        System.out.println(users);
-        //Need to investigate why no students as the string
-        //Solution - need to add Arrays.toString, cause we receive array not the value.
+    @Test(testName = "Verify actual full user data with id 7 equal expected full user with id 7")
+    public void verifyUserDataEqualExpectedData() {
+        UserInfo actualUserData
+                = restTemplate.getForObject(getUserUrlById(7), UserInfo.class);
+        System.out.println("Actual user data is: " + actualUserData);
+
+        UserInfo expectedUserData;
+        expectedUserData = createUserWithId7();
+        System.out.println("Expected user data is: " + expectedUserData);
+
+        Assert.assertEquals(actualUserData, expectedUserData);
     }
 
-    //Solution 3
-    @Test(testName = "Verify all users")
-    public void verifyGETAllUsersByIdAndParse1() {
-        ResponseEntity<List> users = restTemplate.getForEntity(getAllUsersListUrl, List.class);
-        System.out.println(users);
-        HttpStatus statusCode = users.getStatusCode();
-        System.out.println("Status code is: " + statusCode);
-        List<Object> userDetails = users.getBody();
-        System.out.println("Response body is: " + userDetails);
+    @Test(testName = "Verify actual user data with id 7 equal expected user with id 7")
+    public void verifyUserFullInfoEqualExpectedFullInfo() {
+        UserInfo actualUserData
+                = restTemplate.getForObject(getUserUrlById(7), UserInfo.class);
+
+        Data actualUser;
+        actualUser = actualUserData.getData();
+        System.out.println("Actual user data is: " + actualUser);
+
+        Data expectedUser;
+        expectedUser = createDataWithId7();
+        System.out.println("Expected user data is: " + expectedUser);
+
+        Assert.assertEquals(actualUser, expectedUser);
     }
 
-    //Solution 4
-    @Test(testName = "Verify all users")
-    public void verifyGETAllUsersByIdAndParse4() {
-        ResponseEntity<UserInfo[]> users = restTemplate.getForEntity(getAllUsersListUrl, UserInfo[].class);
-        UserInfo[] userInfo = users.getBody();
-        System.out.println("*************");
-        System.out.println(users);
-        System.out.println("*************");
-        System.out.println("Response body is: " + userInfo);
-        System.out.println("*************");
-        HttpStatus statusCode = users.getStatusCode();
-        System.out.println("Status code is: " + statusCode);
+    @Test(testName = "Show all users data via GET API call")
+    public void showAllUsersList() {
+        UserInfoList response = restTemplate.getForObject(getAllUsersListUrl, UserInfoList.class);
+        System.out.println("Data for all users is shown: " + response);
     }
 
-    //Solution 5
-    @Test(testName = "Verify all users")
-    public void verifyGETAllUsersByIdAndParse5() {
-        UserInfoList response = restTemplate.getForObject(getAllUsersListUrl,UserInfoList.class);
-        List<UserInfo> users = response.getUserInfo();
-        System.out.println("*************");
-        System.out.println(users);
-        System.out.println("*************");
-        System.out.println("Response body is: " + users);
-        System.out.println("*************");
+    @Test(testName = "Show one user data via GET API call from list of the users")
+    public void showAllUsersAndParseOneByOne() {
+        int i = 0;
+        UserInfoList response = restTemplate.getForObject(getAllUsersListUrl, UserInfoList.class);
+
+        while (i < response.getData().size()) {
+            System.out.println("Data for user with id " + response.getData().get(i).getId() + " is shown: " + response.getData().get(i));
+            i++;
+        }
     }
 
+    @Test(testName = "Verify actual user data equal expected user data from all users list")
+    public void verifyActualUserEqualExpectedUserFromAllUsersList() {
+        UserInfoList response = restTemplate.getForObject(getAllUsersListUrl, UserInfoList.class);
+
+        Data actualUser;
+        actualUser = response.getData().get(0);
+        System.out.println("Actual user data is: " + actualUser);
+
+        Data expectedUser;
+        expectedUser = createDataWithId7();
+        System.out.println("Expected user data is: " + expectedUser);
+
+        Assert.assertEquals(actualUser, expectedUser);
+    }
 }
