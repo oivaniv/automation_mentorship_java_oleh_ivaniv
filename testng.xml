@@ -4,7 +4,7 @@
 <suite name="FileWriter">
     <test name="WriteDataCustomPath">
         <classes>
-            <class name="Lesson_4.fileEditor.test.WriteDataCustomPath"/>
+            <class name="lesson_4_White_Box_Practice.fileEditor.test.WriteDataCustomPath"/>
 
         </classes>
     </test>
