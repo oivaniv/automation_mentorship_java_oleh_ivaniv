@@ -3,7 +3,7 @@
 <suite name="Test Suite">
     <test name="Test search page">
         <classes>
-            <class name="com.test.ui.TitleTest"></class>
+            <class name="com.test.selenium.spagetticode.TitleTest"></class>
         </classes>
     </test>
 </suite>

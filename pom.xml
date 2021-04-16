@@ -75,6 +75,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
+            <version>4.3.3</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
@@ -104,6 +105,7 @@
             <version>2.13.9</version>
         </dependency>
 
+
     </dependencies>
 
     <!-- Used to add properties for build -->
@@ -126,6 +128,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
                 <configuration>
                     <resultsDirectory>${project.basedir}${file.separator}allure-results</resultsDirectory>
                     <reportVersion>2.13.9</reportVersion>

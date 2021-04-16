@@ -1,4 +1,4 @@
-package com.test.ui;
+package com.test.selenium.spagetticode;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
