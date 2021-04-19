@@ -1,4 +1,4 @@
-package lesson_10_OK_HTTP_API;
+package lesson_10_OK_HTTP_API.myApi;
 
 public class UrlController {
     public final static String getStudentUrl = "http://localhost:8080/api/v1/student/";

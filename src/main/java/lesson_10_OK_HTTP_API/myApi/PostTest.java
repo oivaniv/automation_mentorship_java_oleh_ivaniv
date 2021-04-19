@@ -1,11 +1,11 @@
-package lesson_10_OK_HTTP_API;
+package lesson_10_OK_HTTP_API.myApi;
 
 import okhttp3.*;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
-import static lesson_10_OK_HTTP_API.UrlController.postStudentUrl;
+import static lesson_10_OK_HTTP_API.myApi.UrlController.postStudentUrl;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
