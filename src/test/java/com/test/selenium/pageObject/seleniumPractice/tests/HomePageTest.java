@@ -29,7 +29,7 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void verifyHomePageTabsTest() {
+    public void verifyHomePageWomenTabTest() {
         Assert.assertTrue(homePage.isWomenTabButtonDisplayed());
         Assert.assertEquals(homePage.womenTabTitleText(),womenTabTitle);
     }
