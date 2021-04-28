@@ -31,7 +31,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void verifyHomePageWomenTabTest() {
         Assert.assertTrue(homePage.isWomenTabButtonDisplayed());
-        Assert.assertEquals(homePage.womenTabTitleText(),womenTabTitle);
+        Assert.assertEquals(homePage.womenTabTitleText(),"womenTabTitle");
     }
 
     @Test
@@ -40,8 +40,5 @@ public class HomePageTest extends BaseTest {
         Assert.assertEquals(searchPage.searchResultTitleValue().replaceAll("\\W",""), textToSearch);
     }
 
-    @AfterMethod
-    public void teardown(){
-        driver.quit();
-    }
+
 }
