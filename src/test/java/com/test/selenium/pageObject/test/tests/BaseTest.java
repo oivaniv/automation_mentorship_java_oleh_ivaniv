@@ -1,6 +1,6 @@
-package com.test.selenium.pageObject.tests;
+package com.test.selenium.pageObject.test.tests;
 
-import com.test.selenium.pageObject.pages.LoginPage;
+import com.test.selenium.pageObject.test.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +11,7 @@ public class BaseTest {
     public LoginPage openLoginPage() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("https://google.com.ua");
+        driver.get("http://automationpractice.com/");
         return new LoginPage(driver);
     }
 }

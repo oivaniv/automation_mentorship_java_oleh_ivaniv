@@ -1,4 +1,4 @@
-package com.test.selenium.pageObject.pages;
+package com.test.selenium.pageObject.test.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends HomePage {
     public LoginPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
+        //PageFactory.initElements(driver,this);
     }
 
 
