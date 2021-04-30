@@ -24,6 +24,6 @@ public class HorizontalSliderTest extends BaseTest {
     public void testHorizontalSliderMoveToValue(){
         var horizontalPage = homePage.clickHorizontalSlider();
         horizontalPage.moveHorizontalSliderToValue(Keys.ARROW_RIGHT,4.0);
-        assertEquals(horizontalPage.getSliderValueText(), "4.0");
+        assertEquals(horizontalPage.getSliderValueText(), "4");
     }
 }
