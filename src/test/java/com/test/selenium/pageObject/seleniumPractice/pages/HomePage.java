@@ -1,5 +1,6 @@
 package com.test.selenium.pageObject.seleniumPractice.pages;
 
+import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,11 @@ public class HomePage {
     @FindBy(xpath = "//*[@id=\"searchbox\"]/button")
     private WebElement searchFieldButton;
 
+    public void validateHomePage(){
+        Assert.assertTrue(womenTabButton.isDisplayed());
+        Assert.assertTrue(dressesTabButton.isDisplayed());
+        Assert.assertTrue(tShirtsTabButton.isDisplayed());
+    }
 
     public void searchItem (){
         searchFieldInput.sendKeys("dress");

@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class SearchPage{
-    protected WebDriver driver;
 
     public SearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);

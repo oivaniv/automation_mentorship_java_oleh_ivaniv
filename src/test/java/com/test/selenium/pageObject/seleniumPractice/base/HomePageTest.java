@@ -1,15 +1,9 @@
-package com.test.selenium.pageObject.seleniumPractice.tests;
+package com.test.selenium.pageObject.seleniumPractice.base;
 
 import com.test.selenium.pageObject.seleniumPractice.pages.HomePage;
 import com.test.selenium.pageObject.seleniumPractice.pages.SearchPage;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
-import java.util.concurrent.TimeUnit;
 
 import static com.test.selenium.pageObject.seleniumPractice.helpers.TestData.*;
 
@@ -31,7 +25,7 @@ public class HomePageTest extends BaseTest {
     @Test
     public void verifyHomePageWomenTabTest() {
         Assert.assertTrue(homePage.isWomenTabButtonDisplayed());
-        Assert.assertEquals(homePage.womenTabTitleText(),"womenTabTitle");
+        Assert.assertEquals(homePage.womenTabTitleText(),womenTabTitle);
     }
 
     @Test

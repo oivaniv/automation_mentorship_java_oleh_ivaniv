@@ -1,4 +1,4 @@
-package com.test.selenium.pageObject.test.pages;
+package com.test.selenium.pageObject.avenga.lessons.pages;
 
 import org.openqa.selenium.WebDriver;
 

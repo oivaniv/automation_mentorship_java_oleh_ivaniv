@@ -1,7 +1,7 @@
-package com.test.selenium.pageObject.test.tests;
+package com.test.selenium.pageObject.avenga.lessons.tests;
 
-import com.test.selenium.pageObject.test.pages.HomePage;
-import com.test.selenium.pageObject.test.pages.LoginPage;
+import com.test.selenium.pageObject.avenga.lessons.pages.HomePage;
+import com.test.selenium.pageObject.avenga.lessons.pages.LoginPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;

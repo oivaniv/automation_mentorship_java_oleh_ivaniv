@@ -1,4 +1,4 @@
-package com.test.selenium.pageObject.seleniumPractice.tests;
+package com.test.selenium.pageObject.seleniumPractice.base;
 
 import com.google.common.io.Files;
 import com.test.selenium.pageObject.seleniumPractice.pages.HomePage;
@@ -9,14 +9,10 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {

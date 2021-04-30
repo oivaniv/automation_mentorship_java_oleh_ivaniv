@@ -1,9 +1,8 @@
-package com.test.selenium.pageObject.test.pages;
+package com.test.selenium.pageObject.avenga.lessons.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage extends HomePage {
     public LoginPage(WebDriver driver){
