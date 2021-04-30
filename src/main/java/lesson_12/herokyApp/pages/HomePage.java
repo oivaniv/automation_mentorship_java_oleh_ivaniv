@@ -39,4 +39,24 @@ public class HomePage {
         clickLink("Horizontal Slider");
         return new HorizontalPage(driver);
     }
+
+    public AlertsPage clickJavaScriptAlerts(){
+        clickLink("JavaScript Alerts");
+        return new AlertsPage(driver);
+    }
+
+    public FileUploadPage clickFileUpload(){
+        clickLink("File Upload");
+        return new FileUploadPage(driver);
+    }
+
+    public EntryAdPage clickEntryAd(){
+        clickLink("Entry Ad");
+        return new EntryAdPage(driver);
+    }
+
+    public ContextMenuPage clickContextMenu(){
+        clickLink("Context Menu");
+        return new ContextMenuPage(driver);
+    }
 }
